@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# keeping sudo alive
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Checking OS that can run this script.
+case $(uname | tr '[:upper:]' '[:lower:]') in
+    linux*)
+        OS="Linux"
+        if cat /etc/*release | grep ^NAME | grep Ubuntu; then
+            OS="Ubuntu"
+        elif cat /etc/*release | grep ^NAME | grep Debian; then
+            OS="Debian"
+        else
+            echo "Your Linux Distro currently does not support the script."
+            echo "You can fork the repo and contribute to extend Os support."
+            echo "Repo Link ===> https://github.com/m-nobinur/awesome-devsetup.git"
+            exit 1
+        fi
+    ;;  
+    darwin*)
+        OS="OSX"
+    ;;
+    *)
+        OS="Other"
+        echo "\e[0;31m" "Your OS currently does not support the script."
+        echo "\033[0m" "You can fork the repo and contribute to extend Os support."
+        echo "Repo Link ===> https://github.com/m-nobinur/awesome-devsetup.git"
+        exit 1
+    ;;
+esac
+
+# Runnig scripts on OS
+if [[ $OS == "OSX" ]];then                              
+    echo Mac
+elif [[ $OS == "Debian" ]]
+    echo Debian
+elif [[ $OS == "Ubuntu" ]]
+    echo Ubuntu
+fi;
