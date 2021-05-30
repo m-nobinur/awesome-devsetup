@@ -15,14 +15,12 @@ function setup_mac() {
     
     #checking M1 or Intel
     if [[ `uname -m` == 'arm64' ]]; then
-        echo ""
         echo "+------------------------+"
         echo "You MacOs is based on Apple M1 Chip"
         echo "+-------------------------+"
         echo ""
         # isntall rosseta 2
         if [[ ! `pkgutil --pkgs | grep Rosetta` ]]; then
-            echo ""
             echo "+---------------------------------------+"
             echo "Installing rosseta 2......"
             echo "+----------------------------------------+"
