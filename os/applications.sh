@@ -13,7 +13,7 @@ export apps=(
     lastpass            # password manager
     zoom                # video calling app
     google-drive        # cloud drive
-    amethyst            # Automatic tiling window manager
+    amethyst            # Tiling window manager> Turn on "Display has separate spaces" from mission control.
     karabiner-elements  # Keyboard customizer
     #iterm2             # terminal emulator
     #alfred             # Application launcher and productivity software
