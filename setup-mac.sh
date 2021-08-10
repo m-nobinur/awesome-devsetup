@@ -5,7 +5,7 @@ function setup_mac() {
     sudo -v
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
     
-    . ./.pretty_echo.sh
+    . ./.pretty_func.sh
     
     #checking M1 or Intel
     if [[ `uname -m` == 'arm64' ]]; then
