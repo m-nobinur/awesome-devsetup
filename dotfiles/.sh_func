@@ -1,0 +1,98 @@
+#!/bin/zsh
+
+### turn hidden files on/off in Finder
+function hideon() { defaults write com.apple.Finder AppleShowAllFiles YES ; }
+function hideoff() { defaults write com.apple.Finder AppleShowAllFiles NO ; }
+
+# Create new directory and cd into it (ex. "mkdir x && cd $_")
+mkcd() {
+  if [ ! -n "$1" ]; then
+    echo "Enter a directory name"
+  elif [ -d $1 ]; then
+    echo "\`$1' already exists"
+  else
+    mkdir $1 && cd $1
+  fi
+}
+
+#Automatically do an ls after each cd
+cdls() {
+    if test ! $(which lsd); then
+        if [ -n "$1" ]; then
+            builtin cd "$@" && ls -l
+        else
+            builtin cd ~ && ls -l
+        fi
+    else
+        if [ -n "$1" ]; then
+            builtin cd "$@" && lsd -l
+        else
+            builtin cd ~ && lsd -l
+        fi
+    fi
+}
+
+# Goes up a specified number of directories  (i.e. up 4)
+up() {
+	local d=""
+	limit=$1
+	for ((i=1 ; i <= limit ; i++));do
+		d=$d/..
+	done
+	d=$(echo $d | sed 's/^\///')
+	if [ -z "$d" ]; then
+		d=..
+	fi
+	cd $d
+}
+
+# Extracts any archive(s) extract <filename>
+# This extract & color func is taken from zachbrowne/The Ultimate Bad Ass .bashrc File
+extract () {
+	for archive in $*; do
+		if [ -f $archive ] ; then
+			case $archive in
+				*.tar.bz2)   tar xvjf $archive    ;;
+				*.tar.gz)    tar xvzf $archive    ;;
+				*.bz2)       bunzip2 $archive     ;;
+				*.rar)       rar x $archive       ;;
+				*.gz)        gunzip $archive      ;;
+				*.tar)       tar xvf $archive     ;;
+				*.tbz2)      tar xvjf $archive    ;;
+				*.tgz)       tar xvzf $archive    ;;
+				*.zip)       unzip $archive       ;;
+				*.Z)         uncompress $archive  ;;
+				*.7z)        7z x $archive        ;;
+				*)           echo "Don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+# define color variables to use later
+export NOCOLOR="\033[0m"
+export WHITE='\e[1;37m'
+export BLACK='\e[0;30m'
+export BLUE='\e[0;34m'
+export LIGHT_BLUE='\e[1;34m'
+export GREEN='\e[0;32m'
+export LIGHT_GREEN='\e[1;32m'
+export CYAN='\e[0;36m'
+export LIGHT_CYAN='\e[1;36m'
+export RED='\e[0;31m'
+export LIGHT_RED='\e[1;31m'
+export PURPLE='\e[0;35m'
+export LIGHT_PURPLE='\e[1;35m'
+export BROWN='\e[0;33m'
+export YELLOW='\e[1;33m'
+export GRAY='\e[1;30m'
+export LIGHT_GRAY='\e[0;37m'
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi

@@ -22,8 +22,9 @@ export utils=(
 # Get fonts from: https://github.com/Homebrew/homebrew-cask-fonts/tree/master/Casks
 export fonts=(
     font-fira-code
+    font-fira-code-nerd-font
     font-victor-mono
-    font-jetbrains-mono
     font-anonymous-pro
-    font-meslo-lg
+    # font-jetbrains-mono
+    # font-meslo-lg
 )

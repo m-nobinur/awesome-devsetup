@@ -45,4 +45,5 @@ append_to_zshrc() {
 
 export color_echo
 export pretty_echo
+export append_to_zshrc
 

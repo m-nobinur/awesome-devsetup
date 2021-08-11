@@ -6,7 +6,7 @@ function setup_zsh() {
     sudo -v
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-    . ./.pretty_func.sh
+    . ./lib/.pretty_func.sh
 
     # Install Zsh if doesn't exist
     if test ! $(which zsh); then
@@ -16,11 +16,15 @@ function setup_zsh() {
         pretty_echo "Changing default shell to zsh... "
         chsh -s $(which zsh)
     else
-        chsh -s $(which zsh)
+        #change shell to zsh
+        if [[ $(which zsh) == $(echo $SHELL) ]]; then
+            color_echo "Your default shell is zsh." $GREEN
+        else
+            pretty_echo "Changing default shell to zsh... "
+            chsh -s $(which zsh)
+        fi;
     fi;
     
-    exec zsh -l
-
     if [ ! -e ~/.oh-my-zsh ];then
         pretty_echo "Installing Oh My Zsh......."
         git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.config/.oh-my-zsh
@@ -38,21 +42,23 @@ function setup_zsh() {
             mv ~/.zprofile ~/.backups/.zprofile.orig
             mv ~/.zshenv ~/.backups/.zshenv.orig
             
-            pretty_echo "Loading .zshrc and .zprofile from .dotfiles" $GREEN
+            pretty_echo "Loading .zshrc and .zprofile from dotfiles" $GREEN
             Z_DIR="~/.config/zsh"
             # loading .zshrc
             mkdir -p $Z_DIR
-            cp .dotfiles/.zshrc  "$Z_DIR/.zshrc"
+            cp dotfiles/.zshrc  "$Z_DIR/.zshrc"
             ln -s ~/.config/.zshrc ~/.zshrc
             source ~/.zshrc
             # loading .zprofile
-            cp .dotfiles/.zprofile "$Z_DIR/.zprofile"
+            cp dotfiles/.zprofile "$Z_DIR/.zprofile"
             ln -s ~/.config/.zprofile ~/.zprofile
             # loading .zshenv
-            cp .dotfiles/.zshenv "$Z_DIR/.zshenv"
+            cp dotfiles/.zshenv "$Z_DIR/.zshenv"
             ln -s ~/.config/.zshenv ~/.zshenv
+            # loading .sh_func
+            cp dotfiles/.sh_func "$Z_DIR/.sh_func"
             # loading aliases
-            cp .dotfiles/.aliases "$Z_DIR/.aliases"
+            cp dotfiles/.aliases "$Z_DIR/.aliases"
     else
         pretty_echo "Seems like Oh My Zsh already installed in ~/.oh-my-zsh" $RED
     fi;
