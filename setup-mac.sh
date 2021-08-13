@@ -107,7 +107,7 @@ if [ -f /System/Library/Sounds/Ping.aiff ]; then
     afplay /System/Library/Sounds/Ping.aiff -v 60
 fi;
 
-pretty_echo "Starting OSX setup........"
+pretty_echo "⚙️ Starting OSX setup........"
 color_echo "🖍 This script may overwrite some " $RED
 color_echo "of your default settings" $RED
 echo ""

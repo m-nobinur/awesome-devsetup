@@ -43,7 +43,19 @@ append_to_zshrc() {
     fi;
 }
 
+function check_brew_exist(){
+    # Install Homebrew if doesn't exist
+    if test ! $(which brew); then
+        color_echo "==> Installing homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    else
+        color_echo "✔ Homebrew is installed." $GREEN
+        echo ""
+    fi;
+}
+
 export color_echo
 export pretty_echo
 export append_to_zshrc
+export check_brew_exist
 

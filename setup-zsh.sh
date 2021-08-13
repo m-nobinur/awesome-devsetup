@@ -46,19 +46,19 @@ function setup_zsh() {
             Z_DIR="~/.config/zsh"
             # loading .zshrc
             mkdir -p $Z_DIR
-            cp dotfiles/.zshrc  "$Z_DIR/.zshrc"
+            cp ./dotfiles/.zshrc  "$Z_DIR/.zshrc"
             ln -s ~/.config/.zshrc ~/.zshrc
             source ~/.zshrc
             # loading .zprofile
-            cp dotfiles/.zprofile "$Z_DIR/.zprofile"
+            cp ./dotfiles/.zprofile "$Z_DIR/.zprofile"
             ln -s ~/.config/.zprofile ~/.zprofile
             # loading .zshenv
-            cp dotfiles/.zshenv "$Z_DIR/.zshenv"
+            cp ./dotfiles/.zshenv "$Z_DIR/.zshenv"
             ln -s ~/.config/.zshenv ~/.zshenv
             # loading .sh_func
-            cp dotfiles/.sh_func "$Z_DIR/.sh_func"
+            cp ./dotfiles/.sh_func "$Z_DIR/.sh_func"
             # loading aliases
-            cp dotfiles/.aliases "$Z_DIR/.aliases"
+            cp ./dotfiles/.aliases "$Z_DIR/.aliases"
     else
         pretty_echo "Seems like Oh My Zsh already installed in ~/.oh-my-zsh" $RED
     fi;
@@ -80,9 +80,6 @@ function setup_zsh() {
     pretty_echo "Installing Autojump......."
     chmod +x install.py
     ./install.py
-    append_to_zshrc '# autojump'
-    append_to_zshrc '[[ -s /Users/nobinkhan/.autojump/etc/profile.d/autojump.sh ]] && source /Users/nobinkhan/.autojump/etc/profile.d/autojump.sh'
-    append_to_zshrc 'autoload -U compinit && compinit -u'
     append_to_zshrc 'export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"'
     cd ../..
     rm -rf ZshPlug
@@ -107,7 +104,7 @@ function setup_zsh() {
 }
 
 # Setting Up ZSH.
-echo "Starting ZHS setup....."
+echo "⚙️ Starting ZHS setup....."
 color_echo "This script may overwrite existing files like \"~/.zshrc, ~/.zprofile\"" $RED
 # ping before running the script
 if [ -f /System/Library/Sounds/Ping.aiff ]; then
@@ -120,7 +117,7 @@ echo ""
 #running the setup
 setup_zsh
 
-pretty_echo " ✅ ZSH Setup Complete. +"
+pretty_echo " ✅ ZSH Setup Complete."
 # play sound when done
 if [ -f /System/Library/Sounds/Blow.aiff ]; then
     afplay /System/Library/Sounds/Blow.aiff -v 60
