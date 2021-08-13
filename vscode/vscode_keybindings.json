@@ -1,0 +1,14 @@
+[
+    {
+        "key": "cmd+k a",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "cmd+k b",
+        "command": "workbench.action.toggleStatusbarVisibility"
+    },
+    {
+        "key": "ctrl+alt+t",
+        "command": "workbench.action.toggleMaximizedPanel"
+    }
+]

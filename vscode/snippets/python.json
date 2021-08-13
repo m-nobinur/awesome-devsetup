@@ -1,0 +1,23 @@
+{
+	"Resize image keeping aspect ratio": {
+	"prefix": "resizeimg",
+	"body": [
+		"from PIL import Image",
+		"",
+		"img = Image.open(${1:image-path})",
+		"print(\"Large image size \", img.size)",
+		"",
+		"new_width = 300",
+		"ratio = img.size[0]/img.size[1]",
+		"new_height = new_width/ratio",
+		"",
+		"img = img.resize((new_width,int(new_height)), Image.ANTIALIAS)",
+		"img.save('resized.jpg')",
+		"",
+		"sm_img = Image.open('resized.jpg')",
+		"print(\"Small image size \", sm_img.size)"
+	],
+	"description": "Resize image keeping aspect ratio"
+	}
+
+}

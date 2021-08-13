@@ -1,0 +1,55 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.fontFamily": "Victor Mono",
+    "editor.fontLigatures": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 2000,
+    "editor.fontSize": 16,
+
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+    "terminal.integrated.fontSize": 14,
+
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": true,
+
+    "editor.formatOnSave": true,
+    "editor.fontWeight": 500,
+
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[python]": {
+        "gitlens.codeLens.symbolScopes": [
+            "!Module"
+        ],
+        "editor.wordBasedSuggestions": false
+    },
+    "breadcrumbs.enabled": false,
+    "window.title": "${dirty}${activeFolderMedium}",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.smoothScrolling": true,
+    "editor.scrollbar.verticalScrollbarSize": 1,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "customizeUI.activityBar": "regular",
+    "customizeUI.titleBar": "frameless",
+    "customizeUI.stylesheet": {
+        ".monaco-icon-label>.monaco-icon-label-container>.monaco-icon-description-container>.label-description": "display:none"
+    },
+    "editor.minimap.enabled": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
